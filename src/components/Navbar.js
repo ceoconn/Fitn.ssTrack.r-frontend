@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 // will need to bring in token and other props as needed (such as showing logout when logged in)
 const Navbar = () => {
-    
+
     return (
         <header>
             <nav id='nav'>

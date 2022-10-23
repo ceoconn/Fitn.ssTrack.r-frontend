@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom/client';
 import { Route, BrowserRouter, Routes, useNavigate } from 'react-router-dom';
 import './style.css';
 import {
+    Navbar,
     Home,
     Login,
-    Register,
+    Join,
     Activities,
     Routines,
     MyRoutines

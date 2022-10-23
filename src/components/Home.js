@@ -5,7 +5,7 @@ const Home = () => {
 
     return (
         <div>
-            <h1>Acheive your goals with Fitn.ss Track.r!</h1>
+            <h1>Achieve your goals with Fitn.ss Track.r!</h1>
             {/* {
                 token ? ( */}
           {/* sign up will be link */}

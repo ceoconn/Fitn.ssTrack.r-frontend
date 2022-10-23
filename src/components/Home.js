@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 const Home = () => {
@@ -9,7 +10,7 @@ const Home = () => {
             {/* {
                 token ? ( */}
           {/* sign up will be link */}
-            <p>Not a member? *Sign Up* and get to work!</p>
+            <p>Not a member? <Link to='/join' id='home-sign-up'>Sign Up</Link> and get to work!</p>
             {/* } */}
 
         </div>

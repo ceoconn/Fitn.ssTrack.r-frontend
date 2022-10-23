@@ -12,12 +12,17 @@ import {
     MyRoutines
 } from './components';
 
+import { CssBaseline } from '@mui/material';
+
 const App = () => {
     // states and tokens and calling some api functions
 
     return (
         <div>
-            {/* <Navbar logout={logout} token={token} /> */}
+
+            <Navbar
+            //  pass props: logout={logout} token={token} when ready/made 
+            />
             <Routes>
                 <Route
                     path='/'
@@ -33,7 +38,9 @@ const App = () => {
 const container = document.querySelector('#container');
 const root = ReactDOM.createRoot(container);
 root.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+    <CssBaseline>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </CssBaseline>
 );

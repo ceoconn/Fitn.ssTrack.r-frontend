@@ -7,7 +7,7 @@ const Navbar = () => {
     return (
         <header>
             <nav id='nav'>
-                <Link to='/home'>Home</Link>
+                <Link to='/'>Home</Link>
                 <Link to='/routines'>Routines</Link>
                 <Link to='/my-routines'>My Routines</Link>
                 <Link to='/activities'>Activities</Link>

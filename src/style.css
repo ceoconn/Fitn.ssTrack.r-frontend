@@ -1,6 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
-body {
+* {
     font-family: 'Poppins', sans-serif;
     text-align: center;
+}
+
+header {
+   background: rgba(245, 33, 33, 0.76);
+}
+
+#welcome {
+    color: black;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: right;
+    gap: 15px;
+    padding: auto;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+nav > * {
+    color: white;
+    text-decoration: none;
+    
+}
+
+nav > *:hover {
+    text-shadow: -2px 0 5px rgb(248, 226, 226), 0 2px 5px rgb(248, 226, 226), 2px 0 5px rgb(248, 226, 226), 0 -2px 5px rgb(248, 226, 226);
+    text-decoration: underline;
+    
 }

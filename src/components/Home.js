@@ -4,7 +4,7 @@ import React from 'react';
 const Home = () => {
 
     return (
-        <div>
+        <div id='welcome'>
             <h1>Achieve your goals with Fitn.ss Track.r!</h1>
             {/* {
                 token ? ( */}

@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+header {
+   background: rgba(245, 33, 33, 0.76);
+}
+
+#welcome {
+    color: black;
+    text-align: center;
+    margin-top: 8%;
+}
+
+#home-sign-up {
+    text-decoration: none;
+    color: red;
+}
+
+#home-sign-up:hover {
+    text-decoration: underline;
+    font-weight: bolder;
+}
+
+nav {
+    display: flex;
+    justify-content: right;
+    gap: 15px;
+    padding: auto;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+nav > * {
+    color: white;
+    text-decoration: none;
+    
+}
+
+nav > *:hover {
+    text-shadow: -2px 0 5px rgb(248, 226, 226), 0 2px 5px rgb(248, 226, 226), 2px 0 5px rgb(248, 226, 226), 0 -2px 5px rgb(248, 226, 226);
+    text-decoration: underline;
+    
+}
+
+#join {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50%;
+    margin-bottom: 8%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+#join > * {
+    margin: auto;
+    margin-top: 0.8rem;
+}
+
+#join-text {
+    margin-top: 8%;
+}
+
+#login {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50%;
+    margin-bottom: 8%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+#login > * {
+    margin: auto;
+    margin-top: 0.8rem;
+}
+
+#login-text {
+    margin-top: 8%;
+}
+
+.switch-text {
+    color: blue;
+}
+
+.hidden {
+    display: none;
+}
+
+.error {
+    animation: 1s anim-lineUp ease-out;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+
+@keyframes anim-lineUp {
+    0% {
+      opacity: 0;
+      transform: translateY(80%);
+    }
+    20% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }

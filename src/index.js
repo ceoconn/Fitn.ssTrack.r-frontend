@@ -16,6 +16,9 @@ import { CssBaseline } from '@mui/material';
 
 const App = () => {
     // states and tokens and calling some api functions
+    const [token, setToken] = useState('');
+
+    const navigate = useNavigate();
 
     return (
         <div>
@@ -28,6 +31,15 @@ const App = () => {
                     path='/'
                     element={<Home
                     //  pass needed props here
+                    // token and user for custom greeting
+                    />}
+                />
+                <Route
+                    path='/join'
+                    element={<Join
+                    setToken={ setToken }
+                    token={ token }
+                    navigate={ navigate }
                     />}
                 />
             </Routes>

@@ -12,6 +12,7 @@ header {
 #welcome {
     color: black;
     text-align: center;
+    margin-top: 8%;
 }
 
 #home-sign-up {
@@ -45,3 +46,52 @@ nav > *:hover {
     text-decoration: underline;
     
 }
+
+#join {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50%;
+    margin-bottom: 8%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+#join > * {
+    margin: auto;
+    margin-top: 0.8rem;
+}
+
+#join-text{
+    margin-bottom: 0;
+    margin-top: 8%;
+}
+
+.hidden {
+    display: none;
+}
+
+.error {
+    animation: 1s anim-lineUp ease-out;
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}
+
+@keyframes anim-lineUp {
+    0% {
+      opacity: 0;
+      transform: translateY(80%);
+    }
+    20% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }

@@ -37,9 +37,17 @@ const App = () => {
                 <Route
                     path='/join'
                     element={<Join
-                    setToken={ setToken }
-                    token={ token }
-                    navigate={ navigate }
+                        setToken={setToken}
+                        token={token}
+                        navigate={navigate}
+                    />}
+                />
+                <Route
+                    path='/login'
+                    element={<Login
+                        setToken={setToken}
+                        token={token}
+                        navigate={navigate}
                     />}
                 />
             </Routes>

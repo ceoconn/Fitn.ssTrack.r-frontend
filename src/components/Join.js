@@ -14,7 +14,7 @@ const Join = ({ setToken, navigate }) => {
         if (results.success) {
             setToken(results.data.token);
             window.localStorage.setItem('token', results.data.token);
-            // navigate('/profile');
+            // navigate('/my-routines');
         } else {
             // setError(true);
             console.log(results.error.message)
@@ -25,7 +25,7 @@ const Join = ({ setToken, navigate }) => {
     return (
         <div>
         
-        <h1 id='join-text'>Join and reach your goals!</h1>
+        <h1 id='join-text'>Get started on your fitness journey today</h1>
 
         <form id='join'
             onSubmit={(e) => {
@@ -47,6 +47,7 @@ const Join = ({ setToken, navigate }) => {
                 id='reg-but'>
                 Join!
             </button>
+            <p>Already have an account? <Link to='/login' className='switch-text'>Login instead!</Link></p>
             {/* <p className={!error ? 'hidden' : 'error'}>
                 Whoops! Those credentials already exist, try <Link to='/login'>signing in</Link> instead, or make up something else!
             </p> */}

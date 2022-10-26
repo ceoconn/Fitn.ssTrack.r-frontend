@@ -29,12 +29,12 @@ export const loginUser = async (username, password) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                user: {
+            body: JSON.stringify(
+                {
                     username,
                     password
                 }
-            })
+            )
         })
 
         const result = await response.json();

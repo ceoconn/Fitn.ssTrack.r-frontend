@@ -6,18 +6,19 @@ import { Link } from 'react-router-dom';
 const Login = ({ setToken, navigate }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    // const [error, setError] = useState(false);
+    const [error, setError] = useState(false);
 
     const handleSubmit = async () => {
         const results = await loginUser(username, password);
 
-        if (results.success) {
-            setToken(results.data.token);
-            window.localStorage.setItem('token', results.data.token);
+        if (results.token) {
+console.log(results)
+            setToken(results.token);
+            window.localStorage.setItem('token', results.token);
             navigate('/my-routines')
         } else {
-            // setError(true);
-            console.log('LOGIN FAIL', results.error.message);
+            setError(true);
+            console.log('LOGIN FAIL', results);
         }
     }
 
@@ -30,7 +31,7 @@ const Login = ({ setToken, navigate }) => {
                 onSubmit={(e) => {
                     e.preventDefault();
                     handleSubmit();
-                    // setError(false);
+                    setError(false);
                 }}
             >
                 <input
@@ -47,11 +48,12 @@ const Login = ({ setToken, navigate }) => {
                     type='submit'>
                     Login
                 </button>
-
                 <p>Don't have an account? <Link to='/join' className='switch-text'>Join today!</Link></p>
-                {/* <p className={!error ? 'hidden' : 'error'}>
-                Incorrect username or password
-            </p> */}
+
+                <p className={!error ? 'hidden' : 'error'}>
+                    Incorrect username or password
+                </p>
+
             </form>
         </div>
 

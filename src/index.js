@@ -20,11 +20,17 @@ const App = () => {
 
     const navigate = useNavigate();
 
+    function logout() {
+        window.localStorage.removeItem('token');
+        setToken('')
+    }
+
     return (
         <div>
 
             <Navbar
-            //  pass props: logout={logout} token={token} when ready/made 
+                logout={ logout }
+                token ={ token }
             />
             <Routes>
                 <Route
@@ -48,6 +54,13 @@ const App = () => {
                         setToken={setToken}
                         token={token}
                         navigate={navigate}
+                    />}
+                />
+
+                <Route
+                    path='/my-routines'
+                    element={<MyRoutines
+                    // props
                     />}
                 />
             </Routes>

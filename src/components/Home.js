@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from './fitn.ss_logo.jpg';
+import logo from './logo-color.png';
 
 const Home = ({ token }) => {
 

@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
-  "name": "fitnesstrackerfront",
-=======
   "name": "frontend",
->>>>>>> ba3e0effcbf830252761c43ca38550439b6666e9
   "version": "1.0.0",
   "description": "",
   "main": "index.js",

@@ -9,7 +9,8 @@ import {
     Join,
     Activities,
     Routines,
-    MyRoutines
+    MyRoutines,
+    Profile
 } from './components';
 
 import { CssBaseline } from '@mui/material';

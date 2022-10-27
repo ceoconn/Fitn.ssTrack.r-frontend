@@ -12,13 +12,13 @@ const Join = ({ setToken, navigate }) => {
     const handleSubmit = async () => {
         const results = await registerUser(username, password);
         console.log('RESULTS-join.js:', results)
-        if (results.success) {
-            setToken(results.data.token);
-            window.localStorage.setItem('token', results.data.token);
+        if (results.token) {
+            setToken(results.token);
+            window.localStorage.setItem('token', results.token);
             navigate('/my-routines');
         } else {
             setError(true);
-            console.log(results.error.message)
+            console.log(results.message)
             console.log('user exists')
         }
     }

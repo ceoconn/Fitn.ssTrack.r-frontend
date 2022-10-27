@@ -36,8 +36,7 @@ const App = () => {
                 <Route
                     path='/'
                     element={<Home
-                    //  pass needed props here
-                    // token and user for custom greeting
+                    token={token}
                     />}
                 />
                 <Route

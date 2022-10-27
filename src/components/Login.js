@@ -12,7 +12,7 @@ const Login = ({ setToken, navigate }) => {
         const results = await loginUser(username, password);
 
         if (results.token) {
-console.log(results)
+
             setToken(results.token);
             window.localStorage.setItem('token', results.token);
             navigate('/my-routines')

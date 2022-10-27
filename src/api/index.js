@@ -105,3 +105,21 @@ export const getAllActivities = async () => {
         console.error('getAllActivities-api/index.js FAILED:', err);
     }
 }
+
+export const getPublicRoutines = async () => {
+
+    try {
+        const response = await fetch(`${baseURL}/routines`, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+
+        const results = await response.json();
+        console.log("----Public Routines----", results)
+        return results;
+    }
+    catch (err) {
+        console.error('getPublicRoutines-api/index.js FAILED:', err)
+    }
+}

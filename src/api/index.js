@@ -117,7 +117,7 @@ export const getPublicRoutines = async () => {
         })
 
         const results = await response.json();
-        console.log("----Public Routines----", results)
+        
         return results;
     }
     catch (err) {

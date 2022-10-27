@@ -13,10 +13,13 @@ import {
     Profile
 } from './components';
 
+import { getPublicRoutines } from './api'
+
 import { CssBaseline } from '@mui/material';
 
 const App = () => {
     const [token, setToken] = useState('');
+    const [routines, setRoutines] = useState([]);
 
     const navigate = useNavigate();
 
@@ -25,6 +28,17 @@ const App = () => {
         setToken('')
     }
 
+    async function fetchRoutines() {
+        const results = await getPublicRoutines();
+        setRoutines(results);
+        
+    }
+
+    useEffect(() => {
+        fetchRoutines();
+    }
+
+    )
     return (
         <div>
 
@@ -58,7 +72,7 @@ const App = () => {
                 <Route
                     path='/routines'
                     element={<Routines
-                    // props
+                        routines={routines}
                     />}
                 />
                 <Route

@@ -140,7 +140,7 @@ export const createNewRoutine = async (token,{name, goal}) => {
         })
     })
         const result = await response.json();
-        console.log ("-----New Routine-----", result);
+        
         return result;
     }
     catch (err) {
@@ -157,19 +157,17 @@ export const updateRoutine = async (token,{name, goal, isPublic, _id}) => {
             'Authorization': `Bearer ${token}`
           },
         body: JSON.stringify({
-          name,
-          goal,
-          isPublic
+          name: name,
+          goal: goal,
+          isPublic: isPublic
         })
     })
-        .then(response => response.json())
-        .then(result => {
-        console.log(result);
-        })
-        .catch(console.error);
-    }
-    catch (err) {
-        console.error('createNewRoutine-api/index.js FAILED:', err)
+        const result = await response.json();
+        
+        return result;
+        }
+        catch (err) {
+            console.error('updateRoutine-api/index.js FAILED:', err);
     }
 }
 
@@ -183,14 +181,12 @@ export const deleteRoutine = async (token, {_id} ) => {
             'Authorization': `Bearer ${token}`
         },
     })
-        .then(response => response.json())
-        .then(result => {
-        console.log(result);
-        })
-        .catch(console.error);
+    
+        const result = await response.json();
+        
+        return result;
     }
     catch (err) {
         console.error('deleteRoutine-api/index.js FAILED:', err)
     }
-    
 }

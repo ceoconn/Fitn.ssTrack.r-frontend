@@ -16,7 +16,6 @@ import {
 import { CssBaseline } from '@mui/material';
 
 const App = () => {
-    // states and tokens and calling some api functions
     const [token, setToken] = useState('');
 
     const navigate = useNavigate();
@@ -30,14 +29,14 @@ const App = () => {
         <div>
 
             <Navbar
-                logout={ logout }
-                token ={ token }
+                logout={logout}
+                token={token}
             />
             <Routes>
                 <Route
                     path='/'
                     element={<Home
-                    token={token}
+                        token={token}
                     />}
                 />
                 <Route
@@ -56,10 +55,21 @@ const App = () => {
                         navigate={navigate}
                     />}
                 />
-
+                <Route
+                    path='/routines'
+                    element={<Routines
+                    // props
+                    />}
+                />
                 <Route
                     path='/my-routines'
                     element={<MyRoutines
+                    // props
+                    />}
+                />
+                <Route
+                    path='/activities'
+                    element={<Activities
                     // props
                     />}
                 />

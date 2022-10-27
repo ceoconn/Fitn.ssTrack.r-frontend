@@ -15,7 +15,7 @@ const Join = ({ setToken, navigate }) => {
         if (results.token) {
             setToken(results.token);
             window.localStorage.setItem('token', results.token);
-            navigate('/my-routines');
+            navigate('/');
         } else {
             setError(true);
             console.log(results.message)

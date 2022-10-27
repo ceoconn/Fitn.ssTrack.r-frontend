@@ -14,11 +14,46 @@ header {
     height: 85px;
     border-bottom: 2px;
     opacity: 0.8;
-    box-shadow: 0 0 8px 10px rgb(190, 190, 190) ;
+    box-shadow: inset 0 0 8px 0.7px rgb(0, 0, 0);
 }
 
 #img {
     height: 38vh;
+}
+
+#inline-options {
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: 23%;
+    margin-right: 17%;
+    margin-bottom: 75px;
+    gap: 68px;
+}
+
+#view-routine {
+    text-decoration: none;
+    font-weight: bold;
+    color: red;
+    font-size: 1.3rem;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+
+#view-routine:hover {
+    box-shadow: inset -320px 0 0 0 #fa1b1b;
+    color: white;
+}
+
+#view-all-routines {
+    color: rgb(255, 0, 0);
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+#view-all-routines:hover {
+    box-shadow: inset 320px 0 0 0 #fa1b1b;
+    color: white;
 }
 
 #home-p {
@@ -58,10 +93,10 @@ nav>* {
     font-weight: bold;
     font-size: 22px;
     text-shadow:
-    -2px 0 7px rgb(255, 255, 255),
-    0 2px 7px rgb(247, 247, 247),
-    2px 0 7px rgb(255, 251, 251),
-    0 -2px 7px rgb(255, 255, 255);
+        -2px 0 7px rgb(255, 255, 255),
+        0 2px 7px rgb(247, 247, 247),
+        2px 0 7px rgb(255, 251, 251),
+        0 -2px 7px rgb(255, 255, 255);
 }
 
 nav>*:hover {
@@ -121,7 +156,7 @@ nav>*:hover {
         0 -2px 7px rgb(248, 226, 226);
 }
 
-#logout:hover{
+#logout:hover {
     color: rgb(255, 42, 42);
     font-weight: bolder;
     text-decoration: underline;

@@ -15,7 +15,7 @@ const Login = ({ setToken, navigate }) => {
 
             setToken(results.token);
             window.localStorage.setItem('token', results.token);
-            navigate('/my-routines')
+            navigate('/')
         } else {
             setError(true);
             console.log('LOGIN FAIL', results);

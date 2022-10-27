@@ -14,6 +14,12 @@ const Home = ({ token }) => {
                 token ? (
                     <>
                         <p id='home-login-p'> Let's get to work! </p>
+                        <div id='inline-options'>
+                        <Link to='/my-routines' id="view-routine">View your routines</Link>
+                        <Link to='/routines' id="view-all-routines">Checkout workout options</Link>
+                        </div>
+                        
+                    
                         <img id='img' src={logo} alt='logo' />
                     </>
 

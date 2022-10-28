@@ -13,13 +13,14 @@ import {
     Profile
 } from './components';
 
-import { getPublicRoutines } from './api'
+import { getAllActivities, getPublicRoutines } from './api'
 
 import { CssBaseline } from '@mui/material';
 
 const App = () => {
     const [token, setToken] = useState('');
     const [routines, setRoutines] = useState([]);
+    const [activities, setActivities] = useState([]);
 
     const navigate = useNavigate();
 
@@ -31,7 +32,12 @@ const App = () => {
     async function fetchRoutines() {
         const results = await getPublicRoutines();
         setRoutines(results);
-        
+
+    }
+
+    async function fetchActivities() {
+        const results = await getAllActivities();
+        setActivities(results)
     }
 
     useEffect(() => {
@@ -39,6 +45,11 @@ const App = () => {
     }
 
     )
+
+    useEffect(() => {
+        fetchActivities()
+    })
+
     return (
         <div>
 
@@ -84,7 +95,7 @@ const App = () => {
                 <Route
                     path='/activities'
                     element={<Activities
-                    // props
+                        activities={activities}
                     />}
                 />
             </Routes>

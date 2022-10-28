@@ -134,8 +134,8 @@ export const createNewRoutine = async (token,{name, goal}) => {
             'Authorization': `Bearer ${token}`
           },
         body: JSON.stringify({
-          name,
-          goal,
+          name: name,
+          goal: goal,
           isPublic: true
         })
     })

@@ -119,7 +119,9 @@ const App = () => {
                 <Route
                     path='/activities'
                     element={<Activities
+                        token={token}
                         activities={activities}
+                        fetchActivities={fetchActivities}
                     />}
                 />
             </Routes>

@@ -38,14 +38,16 @@ const MyRoutines = ({ token, fetchRoutines, navigate }) => {
                 />
                 <input
                 type='text'
-                placeholder='Describe the technique'
+                placeholder="What's the goal?"
                 onChange={ (e) => setGoal(e.target.value) }
                 />
 
-                <button onClick={ () => addRoutine() }>Create Routine</button>
+                <button onClick={ (e) => {
+                    e.preventDefault();
+                    addRoutine() 
+                }}>Create Routine</button>
             </form>
         </div>
-        
     )
 }
 

@@ -190,3 +190,68 @@ export const deleteRoutine = async (token, {_id} ) => {
         console.error('deleteRoutine-api/index.js FAILED:', err)
     }
 }
+
+export const createNewActivity = async (token,{name, description}) => {
+    try {
+        const response = await fetch (`${baseURL}/activities`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+        body: JSON.stringify({
+          name: name,
+          description: description
+        })
+    })
+        const result = await response.json();
+       
+        return result;
+    }
+    catch (err) {
+        console.error('createNewActivity-api/index.js FAILED:', err)
+    }
+}
+
+export const updateActivity = async (token,{name, description, _id}) => {
+    try {
+        const response = await fetch (`${baseURL}/activities/${_id}`, {
+        method: "PATCH",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+        body: JSON.stringify({
+          name,
+          description
+          
+        })
+    })
+        .then(response => response.json())
+        .then(result => {
+        console.log(result);
+        })
+        .catch(console.error);
+    }
+    catch (err) {
+        console.error('createNewActivity-api/index.js FAILED:', err)
+    }
+}
+
+export const getRoutinesByActivity = async ({activityId, name, goal}) => {
+
+    try {
+        const response = await fetch(`${baseURL}/${activityId}/routines`, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+
+        const results = await response.json();
+        
+        return results;
+    }
+    catch (err) {
+        console.error('getRourtinesByActivities-api/index.js FAILED:', err)
+    }
+}

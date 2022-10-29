@@ -13,7 +13,7 @@ import {
     Profile
 } from './components';
 
-import { getAllActivities, getPublicRoutines } from './api'
+import { getAllActivities, getPublicRoutines, getUserDetails } from './api'
 
 import { CssBaseline } from '@mui/material';
 
@@ -21,6 +21,7 @@ const App = () => {
     const [token, setToken] = useState('');
     const [routines, setRoutines] = useState([]);
     const [activities, setActivities] = useState([]);
+    const [user, setUser] = useState({});
 
     const navigate = useNavigate();
 
@@ -40,15 +41,36 @@ const App = () => {
         setActivities(results)
     }
 
+    async function getMe() {
+        const storedToken = window.localStorage.getItem('token');
+        
+        if (!token) {
+          if (storedToken) {
+            setToken(storedToken);
+          }
+          return;
+        }
+        
+        const results = await getUserDetails(token)
+    console.log('results', results)
+        if (results.username) {
+          setUser(results);
+        } else {
+          console.log(results.message);
+        }
+      }
+
     useEffect(() => {
         fetchRoutines();
-    }
-
-    )
+    }, [])
 
     useEffect(() => {
         fetchActivities()
-    })
+    }, [])
+
+    useEffect(() => {
+        getMe();
+      }, [token])
 
     return (
         <div>
@@ -89,7 +111,9 @@ const App = () => {
                 <Route
                     path='/my-routines'
                     element={<MyRoutines
-                    // props
+                        token={token}
+                        fetchRoutines={fetchRoutines}
+                        navigate={navigate}
                     />}
                 />
                 <Route

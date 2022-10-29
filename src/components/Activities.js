@@ -6,14 +6,16 @@ const Activities = ({ token, activities, fetchActivities }) => {
     const [createName, setName] = useState('');
     const [createDesc, setDesc] = useState('');
 
-    async function addActivity () {
-        try{
+    const reverseActivities = activities.reverse();
+
+    async function addActivity() {
+        try {
             const newActivity = {
                 token: token,
                 name: createName,
                 description: createDesc
             }
-            
+
             await createNewActivity(token, newActivity);
             fetchActivities();
 
@@ -22,7 +24,7 @@ const Activities = ({ token, activities, fetchActivities }) => {
         catch (err) {
             console.error('addActivity-activities.js FAILED:', err);
         }
-       
+
     }
 
     return (
@@ -31,23 +33,30 @@ const Activities = ({ token, activities, fetchActivities }) => {
             <form>
                 <h2>Create a new activity</h2>
                 <input
-                type='text'
-                placeholder='Name'
-                onChange={ (e) => setName(e.target.value) }
-                />
+                    type='text'
+                    placeholder='Name'
+                    onChange={(e) => {
+                        e.preventDefault();
+                        setName(e.target.value)
+                    }} />
                 <input
-                type='text'
-                placeholder='Describe activity'
-                onChange={ (e) => setDesc(e.target.value) }
-                />
-                <button onClick={ (e) => {
-                    e.preventDefault();
-                    addActivity() 
-                }}>Create Activity</button>
+                    type='text'
+                    placeholder='Describe activity'
+                    onChange={(e) => {
+                        e.preventDefault();
+                        setDesc(e.target.value)
+                    }} />
+                <button
+                    type='submit'
+                    onClick={(e) => {
+                        e.preventDefault();
+                        addActivity();
+                    }}
+                >Create Activity</button>
             </form>
 
             {
-                activities.map((activity) => {
+                reverseActivities.map((activity) => {
                     const { name, id, description } = activity
 
                     return (

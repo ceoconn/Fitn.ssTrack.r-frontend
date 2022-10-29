@@ -2,51 +2,76 @@ import React, { useState } from 'react';
 
 import { createNewRoutine } from '../api';
 
-const MyRoutines = ({ token, fetchRoutines, navigate }) => {
+const MyRoutines = ({ token, fetchRoutines, routines, navigate, user }) => {
     const [createName, setName] = useState('');
     const [createGoal, setGoal] = useState('');
 
-    async function addRoutine () {
-        try{
+    // console.log('USSEEERR:', user)
+    const reverseRoutines = routines.reverse();
+
+    async function addRoutine() {
+        try {
             const newRoutine = {
                 token: token,
                 name: createName,
                 goal: createGoal
             }
-    
+
             await createNewRoutine(token, newRoutine)
             fetchRoutines();
-    
+
             alert('success!')
             navigate('/routines')
         }
         catch (err) {
             console.error('addRoutine-myroutines.js FAILED:', err);
         }
-       
+
     }
 
     return (
         <div id='new-routine'>
-            <h2>Use this form to create your own routine!</h2>
+            <h3>Use this form to create a new routine!</h3>
 
             <form id='new-routine-form'>
                 <input
-                type='text'
-                placeholder='Name of routine'
-                onChange={ (e) => setName(e.target.value) }
+                    type='text'
+                    placeholder='Name of routine'
+                    onChange={(e) => setName(e.target.value)}
                 />
                 <input
-                type='text'
-                placeholder="What's the goal?"
-                onChange={ (e) => setGoal(e.target.value) }
+                    type='text'
+                    placeholder="What's the goal?"
+                    onChange={(e) => setGoal(e.target.value)}
                 />
 
-                <button onClick={ (e) => {
+                <button onClick={(e) => {
                     e.preventDefault();
-                    addRoutine() 
+                    addRoutine()
                 }}>Create Routine</button>
             </form>
+
+            <div id='user-routines'>
+                <h1>Your Current Routines</h1>
+
+                {
+                    reverseRoutines.map((routine) => {
+                        const { name, id, creatorId, creatorName, goal, activities } = routine
+                        
+                        if (creatorId === user.id) {
+                            return (
+                                <div key={id}>
+                                    <h3>{name}</h3>
+                                    <p>goal: {goal}</p>
+                                    <p>creator name: {creatorName}</p>
+                                </div>
+                            )
+                        }
+                    })
+                }
+
+            </div>
+
         </div>
     )
 }

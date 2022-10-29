@@ -52,9 +52,10 @@ const App = () => {
         }
         
         const results = await getUserDetails(token)
-    console.log('results', results)
+    
         if (results.username) {
           setUser(results);
+       
         } else {
           console.log(results.message);
         }
@@ -112,7 +113,9 @@ const App = () => {
                     path='/my-routines'
                     element={<MyRoutines
                         token={token}
+                        user={user}
                         fetchRoutines={fetchRoutines}
+                        routines={routines}
                         navigate={navigate}
                     />}
                 />

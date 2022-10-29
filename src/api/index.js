@@ -117,7 +117,7 @@ export const getPublicRoutines = async () => {
         })
 
         const results = await response.json();
-        console.log(results)
+        console.log('ALL ROUTINESSSS-api/index.js', results)
         return results;
     }
     catch (err) {

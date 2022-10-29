@@ -6,7 +6,9 @@ const Activities = ({ token, activities, fetchActivities }) => {
     const [createName, setName] = useState('');
     const [createDesc, setDesc] = useState('');
 
-    const reverseActivities = activities.reverse();
+    const newActivitiesArr = [...activities]
+
+    const reverseActivities = newActivitiesArr.reverse();
 
     async function addActivity() {
         try {

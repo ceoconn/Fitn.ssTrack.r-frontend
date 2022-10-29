@@ -10,7 +10,7 @@ import {
     Activities,
     Routines,
     MyRoutines,
-    Profile
+    EditRoutine
 } from './components';
 
 import { getAllActivities, getPublicRoutines, getUserDetails } from './api'

@@ -6,7 +6,7 @@ const MyRoutines = ({ token, fetchRoutines, routines, navigate, user }) => {
     const [createName, setName] = useState('');
     const [createGoal, setGoal] = useState('');
 
-    // console.log('USSEEERR:', user)
+    
     const reverseRoutines = routines.reverse();
 
     async function addRoutine() {
@@ -56,14 +56,15 @@ const MyRoutines = ({ token, fetchRoutines, routines, navigate, user }) => {
 
                 {
                     reverseRoutines.map((routine) => {
-                        const { name, id, creatorId, creatorName, goal, activities } = routine
+                        const { name, id, creatorId, goal, activities } = routine
                         
                         if (creatorId === user.id) {
                             return (
                                 <div key={id}>
                                     <h3>{name}</h3>
                                     <p>goal: {goal}</p>
-                                    <p>creator name: {creatorName}</p>
+                                    <button>edit</button>
+                                    <button>delete</button>
                                 </div>
                             )
                         }

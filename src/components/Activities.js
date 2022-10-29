@@ -72,8 +72,6 @@ const Activities = ({ token, activities, fetchActivities }) => {
 
         </div>
 
-
-
     )
 }
 

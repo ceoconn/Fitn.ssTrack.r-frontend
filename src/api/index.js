@@ -172,9 +172,9 @@ export const updateRoutine = async (token,{name, goal, isPublic, _id}) => {
 }
 
 
-export const deleteRoutine = async (token, {_id} ) => {
+export const deleteRoutine = async (token, id ) => {
     try {   
-        const response = await fetch (`${baseURL}/routines/${_id}`, {
+        const response = await fetch (`${baseURL}/routines/${id}`, {
         method: "DELETE",
         headers: {
             'Content-Type': 'application/json',

@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 
 const Routines = ({ routines }) => {
 
-    const reverseRoutines = routines.reverse()
+    const newRoutinesArr = [...routines]
+
+    const reverseRoutines = newRoutinesArr.reverse()
 
     return (
 
         <div>
             <h1>Routines</h1>
-            
+            <div className='lists'>
             {
                 reverseRoutines.map((routine) => {
                     const { name, id, creatorName, goal, activities } = routine
@@ -18,10 +20,15 @@ const Routines = ({ routines }) => {
                             <h3>{name}</h3>
                             <p>goal: {goal}</p>
                             <p>creator name: {creatorName}</p>
+                            
+                            {
+                                // activities.map
+                            }
                         </div>
                     )
                 })
             }
+            </div>
 
 
         </div>

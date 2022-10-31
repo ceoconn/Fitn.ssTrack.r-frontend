@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Paper } from '@mui/material';
+import { Paper, TextField, Button } from '@mui/material';
 import Swal from 'sweetalert2';
 
 import { createNewActivity } from '../api';
@@ -46,29 +46,33 @@ const Activities = ({ token, activities, fetchActivities }) => {
     return (
         <div>
             <h1>Activities</h1>
-            <form>
-                <h2>Create a new activity</h2>
-                <input
+            <h2>Create a new activity</h2>
+            <form id='activity-form'>
+
+                <TextField
                     type='text'
+                    variant='outlined'
                     placeholder='Name'
                     onChange={(e) => {
                         e.preventDefault();
                         setName(e.target.value)
                     }} />
-                <input
+                <TextField
                     type='text'
+                    variant='outlined'
                     placeholder='Describe activity'
                     onChange={(e) => {
                         e.preventDefault();
                         setDesc(e.target.value)
                     }} />
-                <button
-                    type='submit'
+                <Button
+                    variant='contained'
+                    style={{ backgroundColor: 'rgb(255, 42, 42)' }}
                     onClick={(e) => {
                         e.preventDefault();
                         addActivity();
                     }}
-                >Create Activity</button>
+                >Create Activity</Button>
             </form>
             <div className='lists'>
                 {

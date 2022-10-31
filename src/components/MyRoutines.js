@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Paper } from '@mui/material';
+import { Paper, TextField, Button } from '@mui/material';
 
 import Swal from 'sweetalert2';
 
@@ -74,31 +74,36 @@ const MyRoutines = ({ token, fetchRoutines, routines, user }) => {
             <h3>Use this form to create a new routine!</h3>
 
             <form id='new-routine-form'>
-                <input
+                <TextField
                     type='text'
+                    variant='outlined'
                     placeholder='Name of routine'
                     onChange={(e) => setName(e.target.value)}
                 />
-                <input
+                <TextField
                     type='text'
+                    variant='outlined'
                     placeholder="What's the goal?"
                     onChange={(e) => setGoal(e.target.value)}
                 />
 
-                <button onClick={(e) => {
-                    e.preventDefault();
-                    addRoutine();
-                }}>Create Routine</button>
+                <Button
+                    variant='contained'
+                    style={{ backgroundColor: 'rgb(255, 42, 42)' }}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        addRoutine();
+                    }}>Create Routine</Button>
 
             </form>
 
             <div id='user-routines'>
                 <h1>Your Current Routines</h1>
-                <div className='lists'>
+                <div id='user-list' className='lists'>
                     {
                         reverseRoutines.map((routine) => {
                             const { name, id, creatorId, goal, activities } = routine
-                            // getuserroutines
+                            // getuserroutines or whatever api function
                             if (creatorId === user.id) {
                                 return (
                                     <Paper key={id}
@@ -106,8 +111,14 @@ const MyRoutines = ({ token, fetchRoutines, routines, user }) => {
                                     >
                                         <h3>{name}</h3>
                                         <p>goal: {goal}</p>
-                                        <button>edit</button>
-                                        <button onClick={() => handleDelete(id)}>delete</button>
+                                        <Button
+                                            variant='outlined'
+                                            style={{ marginRight: '5px' }}
+                                        >edit</Button>
+                                        <Button
+                                            style={{ marginLeft: '5px', backgroundColor: 'rgb(19, 19, 19)', color: 'white' }}
+                                            variant='contained'
+                                            onClick={() => handleDelete(id)}>delete</Button>
                                     </Paper>
                                 )
                             }

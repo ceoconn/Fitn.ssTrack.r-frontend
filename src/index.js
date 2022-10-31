@@ -116,7 +116,6 @@ const App = () => {
                         user={user}
                         fetchRoutines={fetchRoutines}
                         routines={routines}
-                        navigate={navigate}
                     />}
                 />
                 <Route

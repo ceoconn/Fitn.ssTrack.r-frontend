@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Swal from 'sweetalert2';
 
 import { createNewActivity } from '../api';
 
@@ -18,10 +19,22 @@ const Activities = ({ token, activities, fetchActivities }) => {
                 description: createDesc
             }
 
-            await createNewActivity(token, newActivity);
-            fetchActivities();
+            const results = await createNewActivity(token, newActivity);
 
-            alert('success!')
+            if (!results.id) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'That activity already exists!!',
+                    confirmButtonColor: 'rgb(255, 42, 42)'
+                  })
+            } 
+            else {
+                console.log(results)
+                fetchActivities();
+            }
+            
+
         }
         catch (err) {
             console.error('addActivity-activities.js FAILED:', err);

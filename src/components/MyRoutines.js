@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom'
 
 import { createNewRoutine, deleteRoutine } from '../api';
 
-const MyRoutines = ({ token, fetchRoutines, routines, navigate, user }) => {
+const MyRoutines = ({ token, fetchRoutines, routines, user }) => {
     const [createName, setName] = useState('');
     const [createGoal, setGoal] = useState('');
-
 
     const newRoutinesArr = [...routines]
     const reverseRoutines = newRoutinesArr.reverse();
@@ -22,8 +20,6 @@ const MyRoutines = ({ token, fetchRoutines, routines, navigate, user }) => {
             await createNewRoutine(token, newRoutine)
             fetchRoutines();
 
-            alert('success!')
-            navigate('/routines')
         }
         catch (err) {
             console.error('addRoutine-myroutines.js FAILED:', err);
@@ -32,9 +28,10 @@ const MyRoutines = ({ token, fetchRoutines, routines, navigate, user }) => {
     }
 
     async function handleDelete (id) {
-        console.log(id)
+        
         const results = await deleteRoutine(token, id)
-        console.log('resultss', results)
+        fetchRoutines();
+        console.log('successful deletion', results)
     }
 
     return (
@@ -55,11 +52,11 @@ const MyRoutines = ({ token, fetchRoutines, routines, navigate, user }) => {
 
                 <button onClick={(e) => {
                     e.preventDefault();
-                    addRoutine()
+                    addRoutine();
                 }}>Create Routine</button>
-                
-            </form>
 
+            </form>
+               
             <div id='user-routines'>
                 <h1>Your Current Routines</h1>
                 <div className='lists'>

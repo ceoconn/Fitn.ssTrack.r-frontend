@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Paper } from '@mui/material';
 import Swal from 'sweetalert2';
 
 import { createNewActivity } from '../api';
@@ -27,13 +28,13 @@ const Activities = ({ token, activities, fetchActivities }) => {
                     title: 'Oops...',
                     text: 'That activity already exists!!',
                     confirmButtonColor: 'rgb(255, 42, 42)'
-                  })
-            } 
+                })
+            }
             else {
                 console.log(results)
                 fetchActivities();
             }
-            
+
 
         }
         catch (err) {
@@ -75,10 +76,12 @@ const Activities = ({ token, activities, fetchActivities }) => {
                         const { name, id, description } = activity
 
                         return (
-                            <div key={id}>
+                            <Paper key={id}
+                                elevation={5}
+                            >
                                 <h3>{name}</h3>
                                 <p>description: {description}</p>
-                            </div>
+                            </Paper>
                         )
                     })
                 }

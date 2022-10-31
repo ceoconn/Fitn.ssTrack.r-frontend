@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Paper } from '@mui/material';
 
 const Routines = ({ routines }) => {
 
@@ -16,7 +17,9 @@ const Routines = ({ routines }) => {
                     const { name, id, creatorName, goal, activities } = routine
 
                     return (
-                        <div key={id}>
+                        <Paper key={id}
+                        elevation={5}
+                    >
                             <h3>{name}</h3>
                             <p>goal: {goal}</p>
                             <p>creator name: {creatorName}</p>
@@ -24,7 +27,7 @@ const Routines = ({ routines }) => {
                             {
                                 // activities.map
                             }
-                        </div>
+                        </Paper>
                     )
                 })
             }

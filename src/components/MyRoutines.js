@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { Paper } from '@mui/material';
+
+import Swal from 'sweetalert2';
 
 import { createNewRoutine, deleteRoutine } from '../api';
 
@@ -17,8 +20,19 @@ const MyRoutines = ({ token, fetchRoutines, routines, user }) => {
                 goal: createGoal
             }
 
-            await createNewRoutine(token, newRoutine)
-            fetchRoutines();
+            const results = await createNewRoutine(token, newRoutine)
+
+            if (!results.id) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'That routine already exists!!',
+                    confirmButtonColor: 'rgb(255, 42, 42)'
+                })
+            }
+            else {
+                fetchRoutines();
+            }
 
         }
         catch (err) {
@@ -27,11 +41,32 @@ const MyRoutines = ({ token, fetchRoutines, routines, user }) => {
 
     }
 
-    async function handleDelete (id) {
-        
-        const results = await deleteRoutine(token, id)
-        fetchRoutines();
-        console.log('successful deletion', results)
+    async function handleDelete(id) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this",
+            icon: 'warning',
+            iconColor: 'rgb(255, 115, 0)',
+            showCancelButton: true,
+            confirmButtonColor: 'rgb(255, 42, 42)',
+            cancelButtonColor: 'rgb(24, 23, 23)',
+            confirmButtonText: 'Yes, delete it!'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const results = await deleteRoutine(token, id)
+                fetchRoutines();
+                console.log('successful deletion', results)
+                Swal.fire({
+                    title: 'Deleted!',
+                    text: 'Your file has been deleted.',
+                    icon: 'success',
+                    iconColor: 'rgb(255, 42, 42)',
+                    confirmButtonColor: 'rgb(255, 42, 42)'
+                }
+                )
+            }
+        })
+
     }
 
     return (
@@ -56,28 +91,30 @@ const MyRoutines = ({ token, fetchRoutines, routines, user }) => {
                 }}>Create Routine</button>
 
             </form>
-               
+
             <div id='user-routines'>
                 <h1>Your Current Routines</h1>
                 <div className='lists'>
-                {
-                    reverseRoutines.map((routine) => {
-                        const { name, id, creatorId, goal, activities } = routine
-                        // getuserroutines
-                        if (creatorId === user.id) {
-                            return (
-                                <div key={id}>
-                                    <h3>{name}</h3>
-                                    <p>goal: {goal}</p>
-                                    <button>edit</button>
-                                    <button onClick={() => handleDelete(id)}>delete</button>
-                                </div>
-                            )
-                        }
-                    })
-                }
+                    {
+                        reverseRoutines.map((routine) => {
+                            const { name, id, creatorId, goal, activities } = routine
+                            // getuserroutines
+                            if (creatorId === user.id) {
+                                return (
+                                    <Paper key={id}
+                                        elevation={5}
+                                    >
+                                        <h3>{name}</h3>
+                                        <p>goal: {goal}</p>
+                                        <button>edit</button>
+                                        <button onClick={() => handleDelete(id)}>delete</button>
+                                    </Paper>
+                                )
+                            }
+                        })
+                    }
                 </div>
-           
+
 
             </div>
 

@@ -179,6 +179,7 @@ nav>*:hover {
 
 #each-activity {
     border: 1px solid rgba(39, 39, 39, 0.63);
+    margin-top: 5px;
     border-radius: 5%;
 }
 
@@ -196,7 +197,7 @@ nav>*:hover {
 }
 
 .lists > * {
-    height: 350px;
+    height: 410px;
     width: 350px;
     margin: 5px;
     padding: 10px;

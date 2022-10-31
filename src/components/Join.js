@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { registerUser } from '../api';
 import { Link } from 'react-router-dom';
+import { TextField, Button } from '@mui/material';
 
 
 const Join = ({ setToken, navigate }) => {
@@ -33,21 +34,26 @@ const Join = ({ setToken, navigate }) => {
                     e.preventDefault();
                     handleSubmit()
                 }}>
-                <input
+                <TextField
                     type='text'
+                    variant='outlined'
                     placeholder='Username'
                     onChange={(e) => setUsername(e.target.value)}
                 />
-                <input
+                <TextField
                     type='password'
+                    variant='outlined'
                     placeholder='Password'
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <button
+                <Button
+                    variant='contained'
+                    style={{ backgroundColor: 'rgb(255, 42, 42)' }}
                     type='submit'
-                    id='reg-but'>
+                    id='reg-but'
+                    >
                     Join!
-                </button>
+                </Button>
                 <p className={!error ? null : 'hidden'}>Already have an account? <Link to='/login' className='switch-text'>Login instead!</Link></p>
 
                 <p className={!error ? 'hidden' : 'error'}>

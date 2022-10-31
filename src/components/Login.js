@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { loginUser } from '../api';
 import { Link } from 'react-router-dom';
+import { TextField, Button } from '@mui/material';
 
 
 const Login = ({ setToken, navigate }) => {
@@ -33,20 +34,25 @@ const Login = ({ setToken, navigate }) => {
                     setError(false);
                 }}
             >
-                <input
+                <TextField
                     type='text'
+                    variant='outlined'
                     placeholder='Username'
                     onChange={(e) => setUsername(e.target.value)}
                 />
-                <input
+                <TextField
                     type='password'
+                    variant='outlined'
                     placeholder='Password'
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <button
-                    type='submit'>
+                <Button
+                    type='submit'
+                    variant='contained'
+                    style={{ backgroundColor: 'rgb(255, 42, 42)' }}
+                    >
                     Login
-                </button>
+                </Button>
                 <p>Don't have an account? <Link to='/join' className='switch-text'>Join today!</Link></p>
 
                 <p className={!error ? 'hidden' : 'error'}>

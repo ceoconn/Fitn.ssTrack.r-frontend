@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Paper, TextField, Button } from '@mui/material';
 
 import Swal from 'sweetalert2';
@@ -104,6 +105,7 @@ const MyRoutines = ({ token, fetchRoutines, routines, user }) => {
                         reverseRoutines.map((routine) => {
                             const { name, id, creatorId, goal, activities } = routine
                             // getuserroutines or whatever api function
+                           
                             if (creatorId === user.id) {
                                 return (
                                     <Paper key={id}
@@ -114,7 +116,7 @@ const MyRoutines = ({ token, fetchRoutines, routines, user }) => {
                                         <Button
                                             variant='outlined'
                                             style={{ marginRight: '5px' }}
-                                        >edit</Button>
+                                        ><Link to={`/edit-routine/${id}`}>edit</Link></Button>
                                         <Button
                                             style={{ marginLeft: '5px', backgroundColor: 'rgb(19, 19, 19)', color: 'white' }}
                                             variant='contained'

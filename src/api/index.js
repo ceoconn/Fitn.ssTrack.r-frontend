@@ -148,9 +148,9 @@ export const createNewRoutine = async (token,{name, goal}) => {
     }
 }
 
-export const updateRoutine = async (token,{name, goal, isPublic, _id}) => {
+export const updateRoutine = async (token,{name, goal, isPublic, id}) => {
     try {
-        const response = await fetch (`${baseURL}/routines/${_id}`, {
+        const response = await fetch (`${baseURL}/routines/${id}`, {
         method: "PATCH",
         headers: {
             'Content-Type': 'application/json',
@@ -213,9 +213,9 @@ export const createNewActivity = async (token,{name, description}) => {
     }
 }
 
-export const updateActivity = async (token,{name, description, _id}) => {
+export const updateActivity = async (token,{name, description, id}) => {
     try {
-        const response = await fetch (`${baseURL}/activities/${_id}`, {
+        const response = await fetch (`${baseURL}/activities/${id}`, {
         method: "PATCH",
         headers: {
             'Content-Type': 'application/json',

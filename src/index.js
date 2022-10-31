@@ -43,23 +43,23 @@ const App = () => {
 
     async function getMe() {
         const storedToken = window.localStorage.getItem('token');
-        
+
         if (!token) {
-          if (storedToken) {
-            setToken(storedToken);
-          }
-          return;
+            if (storedToken) {
+                setToken(storedToken);
+            }
+            return;
         }
-        
+
         const results = await getUserDetails(token)
-    
+
         if (results.username) {
-          setUser(results);
-       
+            setUser(results);
+
         } else {
-          console.log(results.message);
+            console.log(results.message);
         }
-      }
+    }
 
     useEffect(() => {
         fetchRoutines();
@@ -71,7 +71,7 @@ const App = () => {
 
     useEffect(() => {
         getMe();
-      }, [token])
+    }, [token])
 
     return (
         <div>
@@ -124,6 +124,15 @@ const App = () => {
                         token={token}
                         activities={activities}
                         fetchActivities={fetchActivities}
+                    />}
+                />
+                <Route
+                    path='/edit-routine/:routine_id'
+                    element={<EditRoutine
+                        token={token}
+                        navigate={navigate}
+                        fetchRoutines={fetchRoutines}
+                        routines={routines}
                     />}
                 />
             </Routes>

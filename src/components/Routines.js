@@ -22,28 +22,27 @@ const Routines = ({ routines }) => {
                             >
                                 <h3>{name}</h3>
                                 <p><strong>goal:</strong> {goal}</p>
-                                <p><strong>creator name:</strong> {creatorName}</p>
-                                <p style={{textDecoration:'underline'}}><strong>activities:</strong></p>
-                                <div id='routine-activities'>
-                                {
-                                    activities.map((activity) => {
-                                        const { name, description, count, duration } = activity
+                                <p><strong>created by:</strong> {creatorName}</p>
+                                <p style={{ textDecoration: 'underline' }}><strong>activities:</strong></p>
+                                <div>
+                                    {
+                                        activities.map((activity) => {
+                                            const { name, description, count, duration } = activity
 
-                                        return (
-                                            <div id='each-activity'>
-                                                
-                                                <p><strong>name:</strong> {name}</p>
-                                                <p><strong>description:</strong> {description}</p>
-                                                <p><strong>count:</strong> {count}</p>
-                                                <p><strong>duration:</strong> {duration}</p>
-                                                
-                                            </div>
+                                            return (
+                                                <div id='each-activity'>
 
-                                        )
-                                    })
-                                }
+                                                    <p><strong>name:</strong> {name}</p>
+                                                    <p><strong>description:</strong> {description}</p>
+                                                    <p><strong>count:</strong> {count}</p>
+                                                    <p><strong>duration:</strong> {duration}</p>
+
+                                                </div>
+                                            )
+                                        })
+                                    }
                                 </div>
-                                
+
                             </Paper>
                         )
                     })
@@ -57,54 +56,3 @@ const Routines = ({ routines }) => {
 }
 
 export default Routines;
-
-// routines:
-
-// activities
-// :
-// []
-// creatorId
-// :
-// 882
-// creatorName
-// :
-// "Mar"
-// goal
-// :
-// "take dogs "
-// id
-// :
-// 2046
-// isPublic
-// :
-// true
-// name
-// :
-// "afternoon walk"
-
-
-// activities:
-
-// 0
-// :
-// count
-// :
-// 1
-// description
-// :
-// "Dont do it"
-// duration
-// :
-// 1
-// id
-// :
-// 1
-// name
-// :
-// "Not wide grip"
-// routineActivityId
-// :
-// 9494
-// routineId
-// :
-// 580

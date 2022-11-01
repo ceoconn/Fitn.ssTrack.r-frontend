@@ -74,7 +74,7 @@ const Activities = ({ token, activities, fetchActivities }) => {
                     }}
                 >Create Activity</Button>
             </form>
-            <div className='lists'>
+            <div id='activity' className='lists'>
                 {
                     reverseActivities.map((activity) => {
                         const { name, id, description } = activity

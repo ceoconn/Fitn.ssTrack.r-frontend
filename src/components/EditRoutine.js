@@ -1,30 +1,64 @@
 import React, { useState } from 'react';
 import { TextField, Button } from '@mui/material';
 import { useParams } from 'react-router-dom';
+import { updateRoutine } from '../api';
 
 
 const EditRoutine = ({ routines, token, fetchRoutines, navigate }) => {
     const { routine_id } = useParams();
-    console.log('routine idddd', routine_id)
 
-    const currRoutine = routines.filter(routine => routine.id === routine_id)
-    console.log('probs errorrr', routine)
+    // why does it work with loosely equals but not strictly?
+    const [currRoutine] = routines.filter(routine => routine.id == routine_id)
+    const { name, goal, isPublic, id, activities } = currRoutine;
+    
+    const [newName, setNewName] = useState(name);
+    const [newGoal, setNewGoal] = useState(goal);
+    const [newIsPublic, setNewIsPublic] = useState(isPublic);
 
-    const [newName, setNewName] = useState('');
-    const [newGoal, setNewGoal] = useState('');
+    async function editRoutine() {
+        try{
+            const editedRoutine = {
+                token: token,
+                name: newName,
+                goal: newGoal,
+                isPublic: newIsPublic,
+                id: id
+            }
+    
+            await updateRoutine(token, editedRoutine);
+            navigate('/my-routines')
+            fetchRoutines();
+        }
+        catch (err) {
+            console.error('editRoutine-editroutine.js FAILED:', err);
+        }
+        
+    }
 
     return (
-        <form id='edit-routine-form'>
+        <form id='edit-routine-form' onSubmit={ (e) => {
+            e.preventDefault();
+            editRoutine();
+        }}>
+            <p><strong>Current Routine Name:</strong> {name}</p>
             <TextField
                 type='text'
                 placeholder='updated routine name'
-                // onChange={(e) => setNewName(e.target.value)}
+                onChange={(e) => setNewName(e.target.value)}
             />
+            <p><strong>Current Routine Goal:</strong> {goal}</p>
             <TextField
                 text='text'
                 placeholder='updated routine goal'
-                // onChange={(e) => setNewGoal(e.target.value)}
+                onChange={(e) => setNewGoal(e.target.value)}
             />
+            <Button
+                variant='contained'
+                style={{ backgroundColor: 'rgb(255, 42, 42)' }}
+                type='submit'
+            >
+                Submit Edits
+            </Button>
         </form>
     )
 }

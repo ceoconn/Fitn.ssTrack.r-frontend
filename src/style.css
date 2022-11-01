@@ -183,6 +183,22 @@ nav>*:hover {
     border-radius: 5%;
 }
 
+#edit-routine-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50%;
+    margin-top: 8%;
+    margin-left: 25%;
+    margin-right: 25%;
+
+}
+
+#edit-routine-form > * {
+    margin: auto;
+    margin-top: 2rem;
+}
+
 .switch-text {
     color: blue;
 }
@@ -202,6 +218,12 @@ nav>*:hover {
     margin: 5px;
     padding: 10px;
     overflow-y: auto;
+}
+
+
+#activity > * {
+    padding: 6.5%;
+    height: 250px;
 }
 
 .lists ::-webkit-scrollbar {

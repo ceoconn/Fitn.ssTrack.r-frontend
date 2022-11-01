@@ -112,11 +112,11 @@ const MyRoutines = ({ token, fetchRoutines, routines, user }) => {
                                         elevation={5}
                                     >
                                         <h3>{name}</h3>
-                                        <p>goal: {goal}</p>
+                                        <p><strong>goal:</strong> {goal}</p>
                                         <Button
                                             variant='outlined'
                                             style={{ marginRight: '5px' }}
-                                        ><Link to={`/edit-routine/${id}`}>edit</Link></Button>
+                                        ><Link to={`/edit-routine/${id}`} style={{textDecoration:'none', color:'black'}}>edit</Link></Button>
                                         <Button
                                             style={{ marginLeft: '5px', backgroundColor: 'rgb(19, 19, 19)', color: 'white' }}
                                             variant='contained'

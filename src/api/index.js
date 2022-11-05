@@ -68,9 +68,9 @@ export const getUserDetails = async (token) => {
 
 // says no request parameter needed but probably needs an if statement or something or about the token being there
 // added in 'Authorization': `Bearer ${token}`
-export const getUserRoutines = async (token) => {
+export const getUserRoutines = async (token, username) => {
     try {
-        const response = await fetch(`${baseURL}/users/:username/routines`, {
+        const response = await fetch(`${baseURL}/users/${username}/routines`, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
@@ -238,7 +238,7 @@ export const updateActivity = async (token,{name, description, id}) => {
     }
 }
 
-export const getRoutinesByActivity = async ({activityId, name, goal}) => {
+export const getRoutinesByActivity = async (activityId) => {
 
     try {
         const response = await fetch(`${baseURL}/${activityId}/routines`, {
@@ -252,6 +252,73 @@ export const getRoutinesByActivity = async ({activityId, name, goal}) => {
         return results;
     }
     catch (err) {
-        console.error('getRourtinesByActivities-api/index.js FAILED:', err)
+        console.error('getRoutinesByActivities-api/index.js FAILED:', err)
     }
 }
+
+export const deleteRoutineActivity = async (token, id) => {
+    try {
+      const response = await fetch(`${baseURL}/routine_activities/${id}`, {
+        method: "DELETE",
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      })
+
+      const result = await response.json();
+
+      return result
+
+    } catch (err) {
+      console.error('deleteRoutineActivity-api/index.js FAILED', err)
+    }
+  }
+
+export const addActivityToRoutine = async (token, routineId, {activityId, count, duration}) => {
+    try {
+        console.log(activityId, count, duration)
+      const response = await fetch(`${baseURL}/routines/${routineId}/activities`, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          activityId: activityId,
+          count: count,
+          duration: duration
+        })
+      })
+
+      const result = await response.json();
+
+      return result
+
+    } catch (err) {
+        console.error('addActivityToRoutine-api/index.js FAILED:', err)
+    }
+  }
+
+  export const updateRoutineActivity = async (token, id, {count, duration}) => {
+    try {
+      const response = await fetch(`${baseURL}/routine_activities/${id}`, {
+        method: "PATCH",
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          count: count,
+          duration: duration
+        })
+      })
+
+      const result = await response.json();
+
+      return result
+
+    } catch (err) {
+      console.error('updateRoutineActivity-api/index.js FAILED', err)
+    }
+  }

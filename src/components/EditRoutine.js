@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TextField, Button } from '@mui/material';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { updateRoutine } from '../api';
 
 
@@ -9,10 +9,10 @@ const EditRoutine = ({ routines, token, fetchRoutines, navigate }) => {
 
     // why does it work with loosely equals but not strictly?
     const [currRoutine] = routines.filter(routine => routine.id == routine_id)
-    const { name, goal, isPublic, id, activities } = currRoutine;
+    const { name, goal, isPublic, id, } = currRoutine;
     
     const [newName, setNewName] = useState(name);
-    const [newGoal, setNewGoal] = useState(goal);
+    const [newGoal, setNewGoal] = useState(goal)
     const [newIsPublic, setNewIsPublic] = useState(isPublic);
 
     async function editRoutine() {
@@ -52,6 +52,7 @@ const EditRoutine = ({ routines, token, fetchRoutines, navigate }) => {
                 placeholder='updated routine goal'
                 onChange={(e) => setNewGoal(e.target.value)}
             />
+
             <Button
                 variant='contained'
                 style={{ backgroundColor: 'rgb(255, 42, 42)' }}
@@ -59,6 +60,10 @@ const EditRoutine = ({ routines, token, fetchRoutines, navigate }) => {
             >
                 Submit Edits
             </Button>
+            <Button
+                variant='outlined'
+                //style={{ marginRight: '5px' }}
+            ><Link to={`/edit-routine/${id}/add-activity`} style={{textDecoration:'none', color:'black'}}>Add an Activity</Link></Button>
         </form>
     )
 }

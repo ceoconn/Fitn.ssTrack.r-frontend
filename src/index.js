@@ -10,7 +10,8 @@ import {
     Activities,
     Routines,
     MyRoutines,
-    EditRoutine
+    EditRoutine,
+    AddActivityToRoutine,
 } from './components';
 
 import { getAllActivities, getPublicRoutines, getUserDetails } from './api'
@@ -22,6 +23,7 @@ const App = () => {
     const [routines, setRoutines] = useState([]);
     const [activities, setActivities] = useState([]);
     const [user, setUser] = useState({});
+    const [userRoutines, setUserRoutines] = useState([]);
 
     const navigate = useNavigate();
 
@@ -34,6 +36,11 @@ const App = () => {
         const results = await getPublicRoutines();
         setRoutines(results);
 
+    }
+
+    async function fetchMyRoutines() {
+        const results = await getUserRoutines();
+        setUserRoutines(results)
     }
 
     async function fetchActivities() {
@@ -63,6 +70,7 @@ const App = () => {
 
     useEffect(() => {
         fetchRoutines();
+        fetchMyRoutines();
     }, [])
 
     useEffect(() => {
@@ -116,6 +124,8 @@ const App = () => {
                         user={user}
                         fetchRoutines={fetchRoutines}
                         routines={routines}
+                        userRoutines={userRoutines}
+                        
                     />}
                 />
                 <Route
@@ -133,6 +143,18 @@ const App = () => {
                         navigate={navigate}
                         fetchRoutines={fetchRoutines}
                         routines={routines}
+                        allActivities={activities}
+                    />}
+                    
+                />
+                <Route
+                    path='/edit-routine/:routine_id/add-activity'
+                    element={<AddActivityToRoutine
+                        token={token}
+                        navigate={navigate}
+                        fetchRoutines={fetchRoutines}
+                        routines={routines}
+                        allActivities={activities}
                     />}
                 />
             </Routes>

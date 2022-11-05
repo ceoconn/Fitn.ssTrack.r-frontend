@@ -6,10 +6,10 @@ import Swal from 'sweetalert2';
 
 import { createNewRoutine, deleteRoutine } from '../api';
 
-const MyRoutines = ({ token, fetchRoutines, routines, user }) => {
+const MyRoutines = ({ token, fetchRoutines, routines, user, userRoutines }) => {
     const [createName, setName] = useState('');
     const [createGoal, setGoal] = useState('');
-
+    console.log(routines)
     const newRoutinesArr = [...routines]
     const reverseRoutines = newRoutinesArr.reverse();
 
@@ -105,7 +105,7 @@ const MyRoutines = ({ token, fetchRoutines, routines, user }) => {
                         reverseRoutines.map((routine) => {
                             const { name, id, creatorId, goal, activities } = routine
                             // getuserroutines or whatever api function
-                           
+                           console.log(activities)
                             if (creatorId === user.id) {
                                 return (
                                     <Paper key={id}
@@ -113,6 +113,20 @@ const MyRoutines = ({ token, fetchRoutines, routines, user }) => {
                                     >
                                         <h3>{name}</h3>
                                         <p><strong>goal:</strong> {goal}</p>
+                                        <p><strong>activities:</strong></p>
+                                            {activities.map((activity) => {
+                                                const {name, count, duration} = activity
+                                                return (
+                                                <>
+                                                    <p><strong>{name}</strong></p>
+                                                    <p>count = {count}</p>
+                                                    <p>duration = {duration}</p>
+                                                    <hr></hr>
+                                                </>    
+
+                                            )
+                                            
+                                        })}
                                         <Button
                                             variant='outlined'
                                             style={{ marginRight: '5px' }}

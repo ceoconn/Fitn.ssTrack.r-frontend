@@ -59,19 +59,20 @@ const AddActivityToRoutine = ({ token, allActivities, fetchRoutines }) => {
                 placeholder='Set Count'
                 onChange={(e) => setCount(e.target.value)}
             />
-            <p><strong>Duration</strong> </p>
+            <p><strong>Duration:</strong> </p>
             <TextField
                 text='text'
                 placeholder='Set Duration'
                 onChange={(e) => setDuration(e.target.value)}
             />
-            
+            <br></br>
+            <br></br>
             <Button
                 variant='contained'
                 style={{ backgroundColor: 'rgb(255, 42, 42)' }}
                 type='submit'
             >
-                Add Activity
+                Add Activity To Routine
             </Button>
         </form>
     )

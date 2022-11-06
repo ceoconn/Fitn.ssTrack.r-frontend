@@ -17,8 +17,7 @@ const AddActivityToRoutine = ({ token, allActivities, fetchRoutines }) => {
 
     async function addActivity() {
         try {
-            console.log("Current Activity ID", currentActivityId)
-            console.log(count, duration)
+           
             const addedActivity = {
                 activityId: currentActivityId,
                 count: count,
@@ -26,7 +25,7 @@ const AddActivityToRoutine = ({ token, allActivities, fetchRoutines }) => {
             }
 
             const result = await addActivityToRoutine(token, routine_id, addedActivity);
-            console.log(result)
+            
             navigate('/my-routines')
             fetchRoutines();
         }

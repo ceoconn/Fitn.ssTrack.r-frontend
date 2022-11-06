@@ -14,7 +14,7 @@ import {
     AddActivityToRoutine,
 } from './components';
 
-import { getAllActivities, getPublicRoutines, getUserDetails } from './api'
+import { getAllActivities, getPublicRoutines, getUserDetails  } from './api'
 
 import { CssBaseline } from '@mui/material';
 
@@ -38,10 +38,10 @@ const App = () => {
 
     }
 
-    async function fetchMyRoutines() {
-        const results = await getUserRoutines();
-        setUserRoutines(results)
-    }
+    // async function fetchMyRoutines() {
+    //     const results = await getUserRoutines();
+    //     setUserRoutines(results)
+    // }
 
     async function fetchActivities() {
         const results = await getAllActivities();
@@ -70,7 +70,7 @@ const App = () => {
 
     useEffect(() => {
         fetchRoutines();
-        fetchMyRoutines();
+        // fetchMyRoutines();
     }, [])
 
     useEffect(() => {

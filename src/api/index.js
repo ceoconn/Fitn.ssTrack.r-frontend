@@ -257,6 +257,7 @@ export const getRoutinesByActivity = async (activityId) => {
 }
 
 export const deleteRoutineActivity = async (token, id) => {
+    console.log(token, id)
     try {
       const response = await fetch(`${baseURL}/routine_activities/${id}`, {
         method: "DELETE",
@@ -265,9 +266,9 @@ export const deleteRoutineActivity = async (token, id) => {
           'Authorization': `Bearer ${token}`
         }
       })
-
       const result = await response.json();
-
+      
+      console.log(result)
       return result
 
     } catch (err) {
@@ -301,6 +302,7 @@ export const addActivityToRoutine = async (token, routineId, {activityId, count,
   }
 
   export const updateRoutineActivity = async (token, id, {count, duration}) => {
+    console.log(id)
     try {
       const response = await fetch(`${baseURL}/routine_activities/${id}`, {
         method: "PATCH",

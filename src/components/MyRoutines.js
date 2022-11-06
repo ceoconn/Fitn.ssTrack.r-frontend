@@ -4,14 +4,18 @@ import { Paper, TextField, Button } from '@mui/material';
 
 import Swal from 'sweetalert2';
 
-import { createNewRoutine, deleteRoutine } from '../api';
+import { createNewRoutine, deleteRoutine, deleteRoutineActivity } from '../api';
 
-const MyRoutines = ({ token, fetchRoutines, routines, user, userRoutines }) => {
+import { EditRoutineActivity } from '../components';
+
+const MyRoutines = ({ token, fetchRoutines, routines, user }) => {
     const [createName, setName] = useState('');
     const [createGoal, setGoal] = useState('');
-    console.log(routines)
+    
     const newRoutinesArr = [...routines]
     const reverseRoutines = newRoutinesArr.reverse();
+
+
 
     async function addRoutine() {
         try {
@@ -70,6 +74,12 @@ const MyRoutines = ({ token, fetchRoutines, routines, user, userRoutines }) => {
 
     }
 
+    async function DeleteRoutineActivity(token, id) {   
+        
+        const response = await deleteRoutineActivity(token, id)
+        fetchRoutines();
+    }
+
     return (
         <div id='new-routine'>
             <h3>Use this form to create a new routine!</h3>
@@ -102,11 +112,13 @@ const MyRoutines = ({ token, fetchRoutines, routines, user, userRoutines }) => {
                 <h1>Your Current Routines</h1>
                 <div id='user-list' className='lists'>
                     {
-                        reverseRoutines.map((routine) => {
-                            const { name, id, creatorId, goal, activities } = routine
+                        reverseRoutines.map((routine, idx) => {
+                            
+                            const { name, id, creatorId, goal, activities, routineActivityId } = routine
                             // getuserroutines or whatever api function
-                           console.log(activities)
+                           
                             if (creatorId === user.id) {
+                                
                                 return (
                                     <Paper key={id}
                                         elevation={5}
@@ -114,15 +126,27 @@ const MyRoutines = ({ token, fetchRoutines, routines, user, userRoutines }) => {
                                         <h3>{name}</h3>
                                         <p><strong>goal:</strong> {goal}</p>
                                         <p><strong>activities:</strong></p>
-                                            {activities.map((activity) => {
-                                                const {name, count, duration} = activity
+                                            {activities.map((activity, idx) => {
+                                                const {name, count, duration, id, routineActivityId} = activity
                                                 return (
-                                                <>
+                                                <div key={idx}>
                                                     <p><strong>{name}</strong></p>
                                                     <p>count = {count}</p>
                                                     <p>duration = {duration}</p>
+                                                    <EditRoutineActivity
+                                                        count={count}
+                                                        duration={duration}
+                                                        routineActivityId={routineActivityId}
+                                                        token={token}
+                                                        fetchRoutines = {fetchRoutines}
+                                                         />
+                                                    <Button 
+                                                        variant='outlined'
+                                                        onClick={async() => await DeleteRoutineActivity (token, routineActivityId)}
+                                                
+                                                    >Delete this Activity</Button>    
                                                     <hr></hr>
-                                                </>    
+                                                </div>    
 
                                             )
                                             

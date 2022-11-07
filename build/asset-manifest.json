@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c4342d99.css",
+    "main.js": "/static/js/main.609e5b2c.js",
+    "static/media/red-wave.jpg": "/static/media/red-wave.e64f7f7b6582a43ea55d.jpg",
+    "static/media/logo-color.png": "/static/media/logo-color.50c408fa001c954610a2.png",
+    "index.html": "/index.html",
+    "main.c4342d99.css.map": "/static/css/main.c4342d99.css.map",
+    "main.609e5b2c.js.map": "/static/js/main.609e5b2c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c4342d99.css",
+    "static/js/main.609e5b2c.js"
+  ]
+}

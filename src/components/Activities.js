@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Paper, TextField, Button } from '@mui/material';
 import Swal from 'sweetalert2';
 
-import { createNewActivity } from '../api';
+import { createNewActivity, updateActivity } from '../api';
 
 const Activities = ({ token, activities, fetchActivities }) => {
     const [createName, setName] = useState('');
